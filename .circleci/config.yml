@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
       - run: mvn dependency:go-offline # gets the project dependencies
-      - run: mvn package
+      - run: mvn package -Dmaven.test.skip=true
   test :
     docker:
       - image: cimg/openjdk:17.0.1
