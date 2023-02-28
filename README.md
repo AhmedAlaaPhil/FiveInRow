@@ -1,60 +1,29 @@
-# **This repo contains tests for UI and API**
-### UI website :  http://www.uitestingplayground.com/  
-### API swagger : https://petstore.swagger.io/
+# **This repo contains tests for API**
+### API swagger : https://piskvorky.jobs.cz/api/doc
  
- 
-My test approach : is experience based for both UI and API.
- 
-## **UI test cases** :
- 
-### **Test case 1** : check if all the links in home page are working.
- 
-**Priority** : very High
- 
-**description** : this test case gets all the links in the home page and checks if there are broken links.
-This is done by using java.net lib and making HEAD HTTP requests to each link and getting the status code.
-if the status of any link is not 200 the function returns a string with all the broken links instead of the ok message.
- 
-### **Test case 2** : check dynamicID test
- 
-**Priority** :  High
- 
-**description** : This test case tests the dynamic ID exercise which is the first link on the exercise list.
-The first exercise has to be fully functional as it may be the easiest and first exercise the user may try.
- 
-### **Test case 3** : check dynamic Table test
- 
-**Priority** :  medium
- 
-**description** : This test case tests the dynamic Table exercise a random exercise from the exercise list as a type of
-smoke testing for the exercise list.
- 
- 
+
 ## **API test cases** :
- 
-petshop website first launch can be only a static homepage and list of pets in the shop.
-The list is made by first using POST /pet endpoints and GET /store/inventory endpoints.
+ .
  
  
-### **Test case 1** : create an item /pet endpoint.
+### **Test case 1** :POST create user /user endpoint.
  
 **Priority** :  High
  
-**description** : check if the HTTP POST method is working as it can be used to fill the DB before the GUI is ready.
+**description** : create user and get userToken to connect to a game.
  
-### **Test case 2** : get inventory /store/inventory endpoint.
+### **Test case 2** : POST connect to game /connect endpoint.
  
 **Priority** :  High
  
-**description** : check if the HTTP GET method for /store/inventory is working as expected.
-the assertion is that get does not return an empty list. as we created an pet using /pet before calling get /store/inventory
+**description** : connect to create a game to play
  
  
-### **Test case 3** : login GET /user/login.
+### **Test case 3** : POST  play a game /play /login.
  
 **Priority** :  medium
  
-**description** : check if the HTTP get /user/login is working fine and assert that assert that body contains a logged-in user.
+**description** : play a game the API will try for 2 Min 30 seconds times to get 201 respons for 410 or 406 that mean the game bot has a bug.
  
  
 ## **RUN and CI/CD** :
@@ -67,7 +36,7 @@ the assertion is that get does not return an empty list. as we created an pet us
 3. optional intellij IDE
  
 **Run from command line**
-1. clone project to local environment : git clone https://github.com/AhmedAlaaPhil/Assignment.git
+1. clone project to local environment : git clone https://github.com/AhmedAlaaPhil/FiveInRow.git
 2. navigate to project directory
 3. open cmd in the project directory
 4. write **mvn test** and press enter
@@ -79,43 +48,13 @@ the assertion is that get does not return an empty list. as we created an pet us
  
 ## **CI/CD :**
  
-I used jenkins on an AWS EC2 instance
+I am using CircleCI for CI/CD
 
-**P.S**
+The Pipline has two stages:
+1. Build 
+2. Test 
+[CircleCI Pipline](https://app.circleci.com/pipelines/github/AhmedAlaaPhil/FiveInRow)
 
-1. I am using an AWS educational account. All the resources are shut down automatically after 4 hours. Incase of an issue in accessing Jenkins please contact me and I will rerun the EC2 instance asap. 
-2. There is a video showing the AWS EC2 instance and Jenkins demo in JenkinsDemo directory in this repo.
-
-**Steps**
- 
-1. navigate to the  [Jenkins](http://ec2-67-202-27-144.compute-1.amazonaws.com:8080/)
-2. user the test credentials to login :
-username :  testuser
-password :  abc123
-3. run by pressing run button on TechnicalAssignment project
- 
- 
-## **Calliope:**
- 
-I used Calliopes TestNG POST API to update the test report after the testsuite run.
- 
-Report LINK : [Calliope](https://app.calliope.pro/profiles/4528/reports)
- 
-### *Calliopes Improvement*
-1. when uploading a testNG.xml  test suite with more than one class the report shows only the first class.
- 
-### *Calliopes new feature*
-1. support HTML report.
- 
-**P.S**
-If one is trying to access Calliope report and getting unauthorized contact me to add his/her email the company access list  
- 
- 
-## *Next steps In this project*
-1. add more helper class to cover timeout and wait for selenium.
-2. Improve jenkins reporting and layout
-
- 
  
  
  

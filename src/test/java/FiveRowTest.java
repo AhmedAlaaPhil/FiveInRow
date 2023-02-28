@@ -111,6 +111,7 @@ public class FiveRowTest {
     public void  playGame() throws InterruptedException {
         //init play
       play = new Play(userToken , gameToken);
+      int i = 0;
         Response response;
 
         do{
@@ -126,10 +127,10 @@ public class FiveRowTest {
                 .log().status()
                 .extract()
                 .response();
-
+            i++;
         }
 
-        while(response.getStatusCode()!= 201);
+        while(response.getStatusCode()!= 201 && i < 6);
 
         JsonPath jsonPath = new JsonPath(response.asString());
         Assert.assertEquals(playerID , jsonPath.getString("coordinates[0].playerId"));
